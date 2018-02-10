@@ -11,7 +11,7 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class LoginPage {
     loading: Loading;
-    loginCredentials = { email: '', password: '' };
+    loginCredentials = {email: '', password: ''};
 
     constructor(
         public navCtrl: NavController,
@@ -25,12 +25,12 @@ export class LoginPage {
         
         this.authService.login(this.loginCredentials).subscribe(allowed => {
             if (allowed) {
-                this.navCtrl.setRoot(TabsPage, {}, { animate: true, animation: 'ios-transition', direction: 'forward', duration: 900 });
-          } else {
-            this.showError("Dê uma conferida nos dados informados e tente de novo.");
-          }
+                this.navCtrl.setRoot(TabsPage, {}, {animate: true, animation: 'ios-transition', direction: 'forward', duration: 900});
+            } else {
+                this.showError('Dê uma conferida nos dados informados e tente de novo.');
+            }
         }, error => {
-          this.showError(error);
+            this.showError(error);
         });
     }
 

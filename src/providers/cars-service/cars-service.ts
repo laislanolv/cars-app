@@ -12,10 +12,8 @@ export class CarsService {
   
     getCars() {
         return new Promise((resolve, reject) => {
-            this.http.get(CONFIG.API.URL + '/listaCarros').timeout(CONFIG.API.TIMEOUT).map(res => res.json()).subscribe(data => {
-                let cars: any = [];
-                cars = data;
-                resolve(cars);
+            this.http.get(CONFIG.API.URL + '/listaCarros').timeout(CONFIG.API.TIMEOUT).map(res => res.json()).subscribe(carsData => {
+                resolve(carsData);
             }, error => {
                 reject(error);
             });

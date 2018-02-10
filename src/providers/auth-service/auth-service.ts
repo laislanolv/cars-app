@@ -27,10 +27,8 @@ export class AuthService {
                 password: credentials.password
             };
 
-            this.http.post(CONFIG.API.URL + '/login', data).timeout(CONFIG.API.TIMEOUT).map(res => res.json()).subscribe(data => {
-                let userData = data;
-
-                if (data.status === 'erro') {
+            this.http.post(CONFIG.API.URL + '/login', data).timeout(CONFIG.API.TIMEOUT).map(res => res.json()).subscribe(userData => {
+                if (userData.status === 'erro') {
                     observer.next(false);
                     observer.complete();
                 }
@@ -47,8 +45,8 @@ export class AuthService {
     }
     
     authenticated() : Promise<boolean> {
-        let isLoggedIn = this.storageService.getUser().then((data) => {
-            if (data != null) {
+        let isLoggedIn = this.storageService.getUser().then((authData) => {
+            if (authData != null) {
                 return true;
             } else {
                 return false;
