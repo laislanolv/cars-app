@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>Carros</ion-title>
+    </ion-navbar>
+    
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="segment">
+            <ion-segment-button value="0">Todos</ion-segment-button>
+            <ion-segment-button value="1">Passeio</ion-segment-button>
+            <ion-segment-button value="2">Esportivo</ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Puxe para atualizar"
+            refreshingSpinner="circles"
+            refreshingText="Atualizando...">
+        </ion-refresher-content>
+    </ion-refresher>
+      
+    <div *ngIf="!hasCars" class="loading-cars">
+        <ion-spinner></ion-spinner><br><br>Carregando...
+    </div>
+
+    <div [ngSwitch]="segment"> 
+        <div *ngSwitchCase="'0'">
+            <div *ngFor="let car of cars">
+                <ion-card *ngFor="let item of car.carros">
+                    <div class="overlay"></div>
+                    <img-loader src="{{item.urlIimage}}" useImg></img-loader>
+                    <div class="card-title">{{item.nomeCarro}}</div>
+                    <!-- <div class="card-subtitle">Subtítulo</div> -->
+                </ion-card>
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'1'">
+            <div *ngFor="let car of cars">
+                <div *ngIf="car.idTipoCarro == '1'">
+                    <ion-card *ngFor="let item of car.carros">
+                        <div class="overlay"></div>
+                        <img-loader src="{{item.urlIimage}}" useImg></img-loader>
+                        <div class="card-title">{{item.nomeCarro}}</div>
+                        <!-- <div class="card-subtitle">Subtítulo</div> -->
+                    </ion-card>
+                </div>
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'2'">
+            <div *ngFor="let car of cars">
+                <div *ngIf="car.idTipoCarro == '2'">
+                    <ion-card *ngFor="let item of car.carros">
+                        <div class="overlay"></div>
+                        <img-loader src="{{item.urlIimage}}" useImg></img-loader>
+                        <div class="card-title">{{item.nomeCarro}}</div>
+                        <!-- <div class="card-subtitle">Subtítulo</div> -->
+                    </ion-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

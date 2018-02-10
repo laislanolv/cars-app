@@ -1,0 +1,8 @@
+{
+    "name": "cars-app",
+    "app_id": "6bad7b89",
+    "type": "ionic-angular",
+    "integrations": {
+        "cordova": {}
+    }
+}

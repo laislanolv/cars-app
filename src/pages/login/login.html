@@ -1,0 +1,22 @@
+<ion-content padding>
+    <img class="logo-img" src="assets/imgs/logo.png"><br><br>
+    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+                    <ion-item>
+                        <ion-input name="email" type="email" placeholder="E-mail" [(ngModel)]="loginCredentials.email" email required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input name="password" type="password" placeholder="Senha" [(ngModel)]="loginCredentials.password" required></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button type="submit" ion-button full [disabled]="!loginForm.form.valid">Login</button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>
