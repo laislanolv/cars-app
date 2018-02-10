@@ -31,7 +31,7 @@
             <div *ngFor="let car of cars">
                 <ion-card *ngFor="let item of car.carros">
                     <div class="overlay"></div>
-                    <img-loader src="{{item.urlIimage}}" useImg></img-loader>
+                    <img src="{{item.urlIimage}}" alt="{{item.nomeCarro}}">
                     <div class="card-title">{{item.nomeCarro}}</div>
                     <!-- <div class="card-subtitle">Subtítulo</div> -->
                 </ion-card>
@@ -43,7 +43,7 @@
                 <div *ngIf="car.idTipoCarro == '1'">
                     <ion-card *ngFor="let item of car.carros">
                         <div class="overlay"></div>
-                        <img-loader src="{{item.urlIimage}}" useImg></img-loader>
+                        <img src="{{item.urlIimage}}" alt="{{item.nomeCarro}}">
                         <div class="card-title">{{item.nomeCarro}}</div>
                         <!-- <div class="card-subtitle">Subtítulo</div> -->
                     </ion-card>
@@ -56,7 +56,7 @@
                 <div *ngIf="car.idTipoCarro == '2'">
                     <ion-card *ngFor="let item of car.carros">
                         <div class="overlay"></div>
-                        <img-loader src="{{item.urlIimage}}" useImg></img-loader>
+                        <img src="{{item.urlIimage}}" alt="{{item.nomeCarro}}">
                         <div class="card-title">{{item.nomeCarro}}</div>
                         <!-- <div class="card-subtitle">Subtítulo</div> -->
                     </ion-card>

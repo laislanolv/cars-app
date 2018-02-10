@@ -2,7 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
-import { IonicImageLoader } from 'ionic-image-loader';
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
@@ -31,7 +30,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         BrowserModule,
         HttpModule,
         IonicModule.forRoot(MyApp),
-        IonicImageLoader.forRoot(),
         IonicStorageModule.forRoot({
           name: '__cars',
           driverOrder: ['indexeddb', 'sqlite', 'websql']
