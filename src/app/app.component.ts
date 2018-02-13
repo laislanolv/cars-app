@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { AuthService } from '../providers/auth-service/auth-service';
 
@@ -15,13 +16,13 @@ export class MyApp {
     rootPage: any;
 
     constructor(
-        platform: Platform,
-        statusBar: StatusBar,
-        splashScreen: SplashScreen,
+        public platform: Platform,
+        public statusBar: StatusBar,
+        public splashScreen: SplashScreen,
+        public screenOrientation: ScreenOrientation,
         public authService: AuthService
     ) {
         platform.ready().then(() => {
-
             this.authService.authenticated().then((authenticated) => {
                 if (authenticated) {
                     this.rootPage = TabsPage;
@@ -32,6 +33,7 @@ export class MyApp {
 
             statusBar.styleDefault();
             splashScreen.hide();
+            screenOrientation.lock('portrait');
         });
     }
 }

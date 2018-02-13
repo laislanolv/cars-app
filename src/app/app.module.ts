@@ -1,8 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 
@@ -20,6 +19,8 @@ import { AlertHelper } from '../helpers/alert-helper/alert-helper';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
     declarations: [
@@ -49,9 +50,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     providers: [
         StatusBar,
         SplashScreen,
+        ScreenOrientation,
+        StorageService,
         AuthService,
         CarsService,
-        StorageService,
         TabsHelper,
         AlertHelper,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
