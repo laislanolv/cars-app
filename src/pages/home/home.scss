@@ -3,10 +3,7 @@ page-home {
         ion-card {
             position: relative;
             text-align: center;
-
-            ion-spinner {
-                min-height: 150px;
-            }
+            min-height: 200px;
         }
 
         .loading-cars {
