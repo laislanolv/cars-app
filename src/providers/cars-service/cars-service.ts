@@ -8,7 +8,9 @@ import 'rxjs/add/operator/timeout'
 
 @Injectable()
 export class CarsService {
-    constructor(public http: Http) {}
+    constructor(
+        public http: Http
+    ) {}
   
     getCars() {
         return new Promise((resolve, reject) => {

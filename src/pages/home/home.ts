@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { CarsService } from '../../providers/cars-service/cars-service';
+
+import { AlertHelper } from '../../helpers/alert-helper/alert-helper';
 
 @Component({
     selector: 'page-home',
@@ -15,9 +17,9 @@ export class HomePage {
 
     constructor(
         public navCtrl: NavController,
-        public toastCtrl: ToastController,
         public authService: AuthService,
-        public carsService: CarsService
+        public carsService: CarsService,
+        public alertHelper: AlertHelper
     ) {}
 
     getCars() {
@@ -29,7 +31,7 @@ export class HomePage {
                 this.hasCars = true;
             }, 100);
         }, error => {
-          this.showToast('Erro ao listar carros. Puxe para atualizar!', 'bottom');
+            this.alertHelper.showToast('Erro ao listar carros. Puxe para atualizar!', 'bottom');
         });
     }
 
@@ -38,21 +40,17 @@ export class HomePage {
         refresher.complete();
     }
 
-    showToast(message, position) {
-        let toast = this.toastCtrl.create({
-            message: message,
-            position: position,
-            duration: 3000
-        });
-  
-        toast.present();
-    }
-
     ionViewDidLoad() {
         this.getCars();
     }
 
     ionViewCanEnter() {
-        return this.authService.authenticated();
+        this.authService.authenticated().then((authenticated) => {
+            if (authenticated) {
+                return true;
+            }
+
+            return false;
+        });
     }
 }

@@ -7,7 +7,9 @@ export class StorageService {
         CURRENT_USER: 'current_user'
     }
 
-    constructor(public storage: Storage) {}
+    constructor(
+        public storage: Storage
+    ) {}
     
     setUser(userData: any) {
         return this.storage.set(this.KEYS.CURRENT_USER, userData);

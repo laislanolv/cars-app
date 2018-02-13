@@ -12,7 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     templateUrl: 'app.html'
 })
 export class MyApp {
-    rootPage:any;
+    rootPage: any;
 
     constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public authService: AuthService) {
         platform.ready().then(() => {

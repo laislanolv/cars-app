@@ -3,14 +3,18 @@ import { NavController, AlertController } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth-service/auth-service';
 
-import { LoginPage } from '../login/login';
+import { LoginPage } from '../../pages/login/login';
 
 @Component({
     selector: 'page-about',
     templateUrl: 'about.html'
 })
 export class AboutPage {
-    constructor(public navCtrl: NavController, public alertCtrl: AlertController, public authService: AuthService) {}
+    constructor(
+        public navCtrl: NavController,
+        public alertCtrl: AlertController,
+        public authService: AuthService
+    ) {}
 
     logout() {
         let logoutAlert = this.alertCtrl.create({
@@ -20,7 +24,6 @@ export class AboutPage {
             {
                 text: 'Sair',
                 handler: () => {
-                    this.hideTabbar();
                     this.authService.logout();
                     this.navCtrl.setRoot(LoginPage);
                 }
@@ -33,20 +36,5 @@ export class AboutPage {
         });
     
         logoutAlert.present();
-    }
-
-    hideTabbar() {
-        let elem = <HTMLElement>document.querySelector(".tabbar");
-        
-        if (elem != null) {
-            elem.style.display = 'none';
-            return;
-        }
-
-        return;
-    }
-
-    ionViewCanEnter() {
-        return this.authService.authenticated();
     }
 }

@@ -1,21 +1,17 @@
 import { CONFIG } from '../../config/config';
 
-import { LoadingController, Loading } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { StorageService } from '../../providers/storage-service/storage-service';
-
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout';
 
+import { StorageService } from '../../providers/storage-service/storage-service';
+
 @Injectable()
 export class AuthService {
-    loading: Loading;
-    
     constructor(
-        public loadingCtrl: LoadingController,
         public http: Http,
         public storageService: StorageService,
     ) {}
@@ -44,16 +40,8 @@ export class AuthService {
         });
     }
     
-    authenticated() : Promise<boolean> {
-        let isLoggedIn = this.storageService.getUser().then((authData) => {
-            if (authData != null) {
-                return true;
-            } else {
-                return false;
-            }
-        });
-        
-        return isLoggedIn;
+    authenticated() {
+        return this.storageService.getUser();
     }
   
     logout() {

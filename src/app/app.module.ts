@@ -15,6 +15,9 @@ import { AuthService } from '../providers/auth-service/auth-service';
 import { CarsService } from '../providers/cars-service/cars-service';
 import { StorageService } from '../providers/storage-service/storage-service';
 
+import { TabsHelper } from '../helpers/tabs-helper/tabs-helper';
+import { AlertHelper } from '../helpers/alert-helper/alert-helper';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -49,7 +52,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
         AuthService,
         CarsService,
         StorageService,
-        { provide: ErrorHandler, useClass: IonicErrorHandler }
+        TabsHelper,
+        AlertHelper,
+        {provide: ErrorHandler, useClass: IonicErrorHandler}
     ]
 })
 
