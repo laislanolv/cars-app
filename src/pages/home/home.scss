@@ -1,40 +1,48 @@
 page-home {
     .card-background-page {
-        ion-card {
-            position: relative;
-            text-align: center;
-            min-height: 200px;
-        }
-
         .loading-cars {
             padding: 80px;
             text-align: center;
             color: #000;
         }
+        
+        ion-card {
+            position: relative;
+            text-align: center;
+            height: 200px;
 
-        .overlay {
-            background: rgba(0, 0, 0, 0.5);
-            width: 100%;
-            height: 100%;
-            position: absolute
-        }
+            .overlay {
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                position: absolute
+            }
 
-        .card-title {
-            position: absolute;
-            top: 36%;
-            font-size: 2.0em;
-            width: 100%;
-            font-weight: bold;
-            color: #fff;
-            
-        }
-      
-        .card-subtitle {
-            font-size: 1.0em;
-            position: absolute;
-            top: 52%;
-            width: 100%;
-            color: #fff;
-        }      
+            .card-img {
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+                width: 100%;
+                height: 100%;
+            }
+
+            .card-title {
+                position: absolute;
+                top: 36%;
+                font-size: 2.0em;
+                width: 100%;
+                font-weight: bold;
+                color: #fff;
+                
+            }
+          
+            .card-subtitle {
+                font-size: 1.0em;
+                position: absolute;
+                top: 52%;
+                width: 100%;
+                color: #fff;
+            }  
+        }   
     }
 }
